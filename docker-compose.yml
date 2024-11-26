@@ -29,8 +29,19 @@ x-common:
 #
 service:
   web:
-    image: nginx
-    restart: always
+    image: tuhina/friendlyhello:2.0
+    deploy:
+      replicas: 5
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: '50M'
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:80"
+    networks:
+      - subnet: 172.20.0.0/16
   database:
     image: mariadb:10.5
     restart: always
