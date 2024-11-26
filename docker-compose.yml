@@ -28,6 +28,9 @@ x-common:
 #
 #
 service:
+  web:
+    image: nginx
+    restart: always
   database:
     image: mariadb:10.5
     restart: always
